@@ -24,13 +24,39 @@ export class RegisterComponent implements OnInit {
     return false;
   }
 
+  checkPatternControl(control: string): boolean{
+    let errors = this.form.controls[control]?.errors;
+    if(errors != undefined){
+      if(errors["pattern"]){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  checkValidConfirmPasswordControl(): boolean{
+    let errors = this.form.errors;
+    if(errors != undefined){
+      if(errors["misMatch"]){
+        return true;
+      }
+    }
+    return false;
+  }
+
   initializeForm(){
     this.form = this.formBuilder.group({
       name:['',[Validators.required]],
       email:['',[Validators.required, Validators.pattern(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/)]],
       password:['',[Validators.required]],
-      confirmPassword:['',[Validators.required]],
-    })
+      confirmPassword:[''],
+    }, {validator:[ConfirmPasswordValidator]});
+
+    this.form.get("password")?.valueChanges.subscribe(selectedValue => {
+      this.form.controls['confirmPassword'].setValidators(
+        [Validators.required,Validators.pattern(selectedValue)]);
+      this.form.controls['confirmPassword'].updateValueAndValidity();
+    });
   }
   get name(){
     return this.form.controls['name'];
@@ -48,17 +74,12 @@ export class RegisterComponent implements OnInit {
     return this.form.controls['confirmPassword'];
   }
 }
-export function ConfirmPasswordValidator(control:AbstractControl)
-{
+export function ConfirmPasswordValidator(control:AbstractControl){
     const password=control.get('password');
     const confirmPassword=control.get('confirmPassword')
-
-    if(password?.pristine || confirmPassword?.pristine)
-    {
+    if(password?.pristine || confirmPassword?.pristine) {
         return null;
-    }
-    else
-    {
+    }else{
         return password && confirmPassword && password.value !==confirmPassword.value 
         ? {'misMatch':true} 
         :null

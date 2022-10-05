@@ -25,10 +25,10 @@
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="email" id="form3Example3c" class="form-control"
-                                                placeholder="Your Email" />
+                                            formControlName="email" placeholder="Your Email" />
                                                 <small class="text-danger"
                                                  *ngIf="checkControl('email') && email?.touched">Email is required</small>
-                                                <!-- <small class="text-danger" *ngIf="checkPatternControl('email') && email?.touched">Enter valid email</small> -->
+                                                <small class="text-danger" *ngIf="checkPatternControl('email') && email?.touched">Enter valid email</small>
                                         </div>
                                     </div>
 
@@ -36,9 +36,9 @@
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="password" id="form3Example4c" class="form-control"
-                                                placeholder="Password" />
+                                            formControlName="password" placeholder="Password" />
                                                 <small class="text-danger"
-                                                 *ngIf="checkControl('password') && email?.touched">Password is required</small>
+                                                 *ngIf="checkControl('password') && password?.touched">Password is required</small>
                                         </div>
                                     </div>
 
@@ -46,20 +46,11 @@
                                         <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="password" id="form3Example4cd" class="form-control"
-                                                placeholder="Repeat your password" />
-                                                <!-- <small class="text-danger" 
-                                                *ngIf="checkControl('confirmPassword') && email?.touched">Password and confirm password doesn't mach</small> -->
+                                            formControlName="confirmPassword" placeholder="Repeat your password" />
+                                                <small class="text-danger" 
+                                                *ngIf="checkValidConfirmPasswordControl() && confirmPassword?.touched">Password and confirm password doesn't mach</small>
                                         </div>
                                     </div>
-
-                                    <div class="form-check d-flex justify-content-center mb-5">
-                                        <input class="form-check-input me-2" type="checkbox" value=""
-                                            id="form2Example3c" />
-                                        <label class="form-check-label" for="form2Example3">
-                                            I agree all statements in <a href="#!">Terms of service</a>
-                                        </label>
-                                    </div>
-
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                         <button type="button" class="btn btn-primary btn-lg">Register</button>
                                     </div>
