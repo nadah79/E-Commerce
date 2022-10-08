@@ -1,30 +1,32 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { CartModule } from './cart/cart.module';
-import { CheckoutModule } from './checkout/checkout.module';
-import { MainModule } from './main/main.module';
 import { ProductsModule } from './products/products.module';
+import { PaymentComponent } from './payment/payment.component';
+import { HeaderComponent } from './main/Components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    PaymentComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MainModule,
     ProductsModule,
-    AuthModule,
-    CheckoutModule,
     CartModule,
+    FormsModule,
     ReactiveFormsModule,
-  
-
+    
     
   ],
   providers: [],

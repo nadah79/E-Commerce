@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
- import {CheckoutComponent} from'./checkout/checkout/checkout.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { PaymentComponent } from './payment/payment.component';
+
+
+
+
 
 const routes: Routes = [
-  {path:'Checkout', component:CheckoutComponent},
-  // {path:'login', component:login},
+  {path:'auth/register',component:RegisterComponent},
+  {path:'auth/login',component:LoginComponent},
+  {path:'payment', component:PaymentComponent},
 
 ];
 
