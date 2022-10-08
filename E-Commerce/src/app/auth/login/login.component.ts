@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder ,FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/Services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,7 +9,9 @@ import { FormBuilder ,FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 form! :FormGroup;
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder, 
+    private userService:UserService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -37,10 +41,18 @@ form! :FormGroup;
       password:['',[Validators.required]],
     })
     }
+
     onLogin(){
-      // this.userService.regiserUser(this.form.value);
-      // this.form.reset();
-      // console.log(this.userService.getUsersFromLocal());
+      if(!this.form.valid) return;
+
+      let user = this.userService.login(this.form.value);
+      if(!user){
+        alert("Invalid credentials");
+        return;
+      }
+      this.userService.saveUserLoginData(user);
+      this.form.reset();
+      this.router.navigateByUrl("/payment");
     }
 
 

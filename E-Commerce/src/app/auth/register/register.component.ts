@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder ,FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +10,8 @@ import { AbstractControl, FormBuilder ,FormGroup, Validators} from '@angular/for
 })
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder, private userService:UserService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -59,9 +62,16 @@ export class RegisterComponent implements OnInit {
     });
   }
   onRegister(){
-    // this.userService.regiserUser(this.form.value);
-    // this.form.reset();
-    // console.log(this.userService.getUsersFromLocal());
+    if(!this.form.valid) return;
+
+    let existedEmail = this.userService.isEmailExistedInUsers(this.form.controls["email"].value);
+    if(existedEmail){
+      alert("This email already existed please choose another one");
+      return;
+    }
+    this.userService.register(this.form.value);
+    this.form.reset();
+    this.router.navigateByUrl("/auth/login");
   }
 
 
