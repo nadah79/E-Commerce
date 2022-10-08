@@ -58,6 +58,13 @@ export class RegisterComponent implements OnInit {
       this.form.controls['confirmPassword'].updateValueAndValidity();
     });
   }
+  onRegister(){
+    // this.userService.regiserUser(this.form.value);
+    // this.form.reset();
+    // console.log(this.userService.getUsersFromLocal());
+  }
+
+
   get name(){
     return this.form.controls['name'];
   }
