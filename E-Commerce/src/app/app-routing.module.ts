@@ -8,7 +8,6 @@ import { PaymentComponent } from './payment/payment.component';
 
 
 
-
 const routes: Routes = [
   {path:'auth/register',component:RegisterComponent},
   {path:'auth/login',component:LoginComponent},
