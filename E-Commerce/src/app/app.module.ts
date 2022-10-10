@@ -8,6 +8,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products/products.module';
+import {HttpClientModule} from '@angular/common/http'
 import { PaymentComponent } from './payment/payment.component';
 import { HeaderComponent } from './main/Components/header/header.component';
 
@@ -26,6 +27,7 @@ import { HeaderComponent } from './main/Components/header/header.component';
     CartModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
     
     
   ],
