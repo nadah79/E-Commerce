@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'auth/login',component:LoginComponent},
   {path:'products/product',component:ProductComponent},
   {path:'products/:id',component:ProductListComponent},
-  {path:'products/product-list',component:ProductListComponent}
+  {path:'products/product-list',component:ProductListComponent},
   {path:'payment', component:PaymentComponent, canActivate: [AuthGuard]},
 ];
 
