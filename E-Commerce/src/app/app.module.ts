@@ -10,7 +10,7 @@ import { CartModule } from './cart/cart.module';
 import { CheckoutModule } from './checkout/checkout.module';
 import { MainModule } from './main/main.module';
 import { ProductsModule } from './products/products.module';
-
+import {HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +26,7 @@ import { ProductsModule } from './products/products.module';
     CartModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
     
 
     
