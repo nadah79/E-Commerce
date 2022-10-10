@@ -1,0 +1,57 @@
+
+    <!-- <div *ngFor="let product of productsData.products">
+        <p>{{product.category+ ": "+product.price+"$"}}</p>
+    </div>     -->
+    <style>
+        .navbar a{
+            padding-left: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: cursive;
+        }
+        .main{
+        text-align:-webkit-center; 
+        margin-top: 100px;    
+        text-align: -webkit-center;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        }
+    </style>
+<div>    
+
+        <div class="main">
+            
+            <div class="card border-info mb-3" style="width: 18rem;margin: 10px auto;" *ngFor="let product of productsData.products">
+                <a href="products/product-list"><img src={{product.images[0]}} class="card-img-top" alt="..." style=""></a>
+                <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <!-- <p class="card-text"> {{product.category}}</p> -->
+                <p class="card-text"> {{product.price +"$"}}</p>
+                <p class="card-text"> {{product.id +"$"}}</p>
+                </div>
+        
+                <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+                <button class="btn btn-primary" (click)="goToProductDescription(product.id)">show decription</button>
+                </div>
+            </div>
+        </div> 
+</div>
+
+
+ 
+
+
+
+
+
+
+
+
+
+            <!-- <nav class="navbar  navbar-light bg-warning" style="justify-content: center">
+            <a routerLink="products/product">product</a>
+            <a routerLink="products/product-list">product-list</a>
+        </nav> -->
