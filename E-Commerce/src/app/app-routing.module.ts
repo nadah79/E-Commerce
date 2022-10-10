@@ -5,10 +5,6 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PaymentComponent } from './payment/payment.component';
 
-
-
-
-
 const routes: Routes = [
   {path:'auth/register',component:RegisterComponent},
   {path:'auth/login',component:LoginComponent},
