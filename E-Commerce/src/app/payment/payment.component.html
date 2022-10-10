@@ -1,6 +1,4 @@
-<!-- if not sign in -->
  
-
 <div class="container p-5">
 
     <section>
@@ -37,10 +35,6 @@
                                                         *ngIf="userName?.errors?.['required']">User Name is
                                                         required
                                                     </small>
-                                                    <small class="text-danger"
-                                                        *ngIf="userName?.errors?.['pattern']">username must
-                                                        contains only capital or small characters.
-                                                    </small>
                                                 </div>
                                             </div>
                                             <br>
@@ -53,9 +47,6 @@
                                                         {{city}}
                                                     </option>
                                                 </select>
-                                                <small class="text-danger" *ngIf="city?.invalid && city?.touched">it
-                                                    is
-                                                    required</small>
                                             </div>
                                             <br>
                                             <div class="form-group">
@@ -64,28 +55,32 @@
                                                     [class.is-invalid]="Street?.invalid && Street?.touched"
                                                     formControlName="Street" class="form-control">
                                                 <div *ngIf="Street?.invalid && Street?.touched">
-                                                    <small class="text-danger" *ngIf="Street?.errors?.['required']">it
-                                                        is
-                                                        required</small>
+                                                    <small class="text-danger" *ngIf="Street?.errors?.['required']">
+                                                        it is required
+                                                    </small>
                                                 </div>
                                             </div>
                                             <br>
                                             <div class="form-group">
                                                 <label>Building no </label>
-                                                <input type="number"
+                                                <input type="text"
                                                     [class.is-invalid]="Building?.invalid && Building?.touched"
                                                     formControlName="Building" class="form-control">
                                                 <div *ngIf="Building?.invalid && Building?.touched">
-                                                    <small class="text-danger" *ngIf="Building?.errors?.['required']">it
-                                                        is
-                                                        required</small>
+                                                    <small class="text-danger" *ngIf="Building?.errors?.['required']">
+                                                        it is required
+                                                    </small>
+                                                    <small class="text-danger" *ngIf="Building?.errors?.['pattern']">
+                                                        it must be number 
+                                                    </small>
                                                 </div>
                                             </div>
                                             <br>
                                             <div class="modal-footer">
                                                 <input type="submit"
                                                     [class]="userDataForm.valid ? 'btn btn-success': 'btn btn-danger'"
-                                                    value="Add adress" (click)="goToStep2()">
+                                                    value="Add adress" (click)="addAdress()"
+                                                    [disabled]="!userDataForm.valid">
                                             </div>
                                         </form>
                                     </div>
@@ -136,43 +131,46 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form [formGroup]="userDataForm">
+                                                    <form [formGroup]="cardForm">
                                                         <div class="form-group">
                                                             <label class="m-2">card number :</label>
-                                                            <input type="number"
-                                                                [class.is-invalid]="Building?.invalid && Building?.touched"
-                                                                formControlName="Building">
-                                                            <div *ngIf="Building?.invalid && Building?.touched">
+                                                            <input type="text"
+                                                                [class.is-invalid]="cardNo?.invalid && cardNo?.touched"
+                                                                formControlName="cardNo">
+                                                            <div *ngIf="cardNo?.invalid && cardNo?.touched">
                                                                 <small class="text-danger"
-                                                                    *ngIf="Building?.errors?.['required']">it is
+                                                                    *ngIf="cardNo?.errors?.['required']">it is
                                                                     required</small>
+                                                                    <small class="text-danger" *ngIf="cardNo?.errors?.['pattern']">
+                                                                        it must be 16 number 
+                                                                    </small>
                                                             </div>
-                                                        </div>
+                                                        </div>                                                 
                                                         <br>
                                                         <div class="form-group">
                                                             <label>Name on Card : </label>
                                                             <input
-                                                                [class.is-invalid]="userName?.invalid && userName?.touched"
-                                                                formControlName="userName" type="text">
-                                                            <div *ngIf="userName?.invalid && userName?.touched">
+                                                                [class.is-invalid]="cardName?.invalid && cardName?.touched"
+                                                                formControlName="cardName" type="text">
+                                                            <div *ngIf="cardName?.invalid && cardName?.touched">
                                                                 <small class="text-danger"
-                                                                    *ngIf="userName?.errors?.['required']">User Name is
+                                                                    *ngIf="cardName?.errors?.['required']">Name is
                                                                     required</small>
                                                                 <small class="text-danger"
-                                                                    *ngIf="userName?.errors?.['pattern']">username must
+                                                                    *ngIf="cardName?.errors?.['pattern']">cardName must
                                                                     contains only capital or small characters.</small>
                                                             </div>
                                                         </div>
                                                         <br>
                                                         <div class="modal-footer">
-
+                                                            <input type="button"
+                                                                class= "btn btn-light"
+                                                                data-bs-dismiss="modal" aria-label="Close" value="cancel">
                                                             <input type="submit"
-                                                                [class]="userDataForm.valid ? 'btn btn-success': 'btn btn-light'"
-                                                                value="cancel" (click)="closeForm()">
-                                                            <input type="submit"
-                                                                [class]="userDataForm.valid ? 'btn btn-success': 'btn btn-danger'"
-                                                                value="Add your card" (click)="goToStep2()" class="m-2">
-                                                        </div>
+                                                                [class]="cardForm.valid ? 'btn btn-success': 'btn btn-danger'"
+                                                                value="Add your card" class="m-2"
+                                                                [disabled]="!cardForm.valid">
+                                                            </div>
                                                     </form>
 
                                                 </div>
@@ -198,8 +196,11 @@
                     <div class="col-lg-6 col-xl-8">
                         <h6>3-confirm your order</h6>
                     </div>
-                    <div class="card col-lg-6 col-xl-8 ">
-                        <div class="card-body ">
+                    <div *ngIf="isAddress && type" class="card col-lg-6 col-xl-8">
+                        <div class="card-body">
+                            <p>{{userName?.value}}</p>
+                            <h6>your address :</h6>
+                            <p> {{Building?.value}},{{Street?.value}},{{city?.value}}</p>
                             <h6>
                                 Order total:
                             </h6>
@@ -210,7 +211,6 @@
             </div>
         </section>
     </div>
-
 </div>
 
 <br>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { AddressService } from '../Services/AddressService/address.service';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -9,26 +10,26 @@ import { Router } from '@angular/router';
 
  
 export class PaymentComponent implements OnInit {
-  login:boolean=false;
-  cridet:boolean=false;
-  type:string="cod";
+  // cridet:boolean=false;
+  // cod:boolean=false;
+  type:boolean=false;
+  isAddress:boolean=false;
 
-  constructor(private fb:FormBuilder ,private router:Router) { }
+  constructor(private fb:FormBuilder ,private router:Router ,private addressservice:AddressService) { }
   cities=["asyut","Cairo","Giza","Alexandria","Mansoura","Hurghada"];
-  userNamePatern="^[A-Za-z]+$";
-
+  buldingPatern="^[0-9]+$";
+  cardNoPatern="^[0-9]{16}"
   userDataForm=this.fb.group({
-    userName:['',[Validators.required,Validators.pattern(this.userNamePatern)]],
-    city:['',[Validators.required]],
-    Building:['',[Validators.required]],
+    userName:['',[Validators.required]],
+    city:['asyut'],
+    Building:['',[Validators.required, Validators.pattern(this.buldingPatern)]],
     Street:['',[Validators.required]]
 
   })
 
   get userName (){
     return this.userDataForm.get('userName')
-  } 
- 
+  }  
   get city(){
     return this.userDataForm.get('city')
   }
@@ -41,29 +42,41 @@ export class PaymentComponent implements OnInit {
   
   
   
-  goToLogin(){
-    if(!this.login)
-    this.router.navigateByUrl('/auth/login');
+  addAdress(){
+    if(!this.userDataForm.valid) return;
+
+    this.addressservice.addAdress(this.userDataForm.value);
+    this.isAddress=true;
   }
   goToStep2(){
     // if(!this.login)
     // this.router.navigateByUrl('/'+this.id);
   }
   onChange(e:any){
-    this.type= e.target.value;
-    if(this.type=="cod")
-    this.cridet= false;
-    if(this.type=="cridet")
-    this.cridet= true;
+    // this.type= e.target.value;
+    if(e.target.value=="cod")
+    this.type= true;
+    if(e.target.value=="cridet")
+    this.type= true;
   }
   closeForm(){
-    this.cridet= false;
+    // this.cridet= false;
 
   }
- 
+
+  cardForm=this.fb.group({
+    cardName:['',[Validators.required]],
+    cardNo:['',[Validators.required, Validators.pattern(this.cardNoPatern)]],
+
+  })
+  get cardName(){
+    return this.cardForm.get("cardName")
+  }
+  get cardNo(){
+    return this.cardForm.get("cardNo")
+  }
   ngOnInit(): void {
 
   }
-
 }
 
