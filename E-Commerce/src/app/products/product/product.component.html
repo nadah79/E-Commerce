@@ -19,22 +19,32 @@
         }
     </style>
 <div>    
+    
+<div  style="display: flex;  justify-content: center; flex-direction: row; border: 5px solid yellow; flex-wrap: wrap;">
+    <button (click)=" getalldata()" >all product</button>
+<button class="btn"  *ngFor="let prdc of productcat"  (click)="category($event)">{{prdc}}</button>
+</div>
 
         <div class="main">
             
-            <div class="card border-info mb-3" style="width: 18rem;margin: 10px auto;" *ngFor="let product of productsData.products">
+            <!-- <div class="card border-info mb-3" style="width: 18rem;margin: 10px auto;" *ngFor="let product of productsData.products"> -->
+            <div class="card border-info mb-3" style="width: 18rem;margin: 10px auto;" *ngFor="let product of productalll">
+                <!-- <a href="products/product-list"><img src={{product.images[0]}} class="card-img-top" alt="..." ></a> -->
                 <a href="products/product-list"><img src={{product.images[0]}} width="18rem" height="200" class="card-img-top" alt="..."></a>
+
                 <div class="card-body">
                 <h5 class="card-title">{{product.title}}</h5>
                 <!-- <p class="card-text"> {{product.category}}</p> -->
                 <p class="card-text"> {{product.price +"$"}}</p>
-                <p class="card-text"> {{product.id +"$"}}</p>
+                <!-- <p class="card-text"> {{product.id +"$"}}</p> -->
                 </div>
         
                 <div class="card-body">
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
                 <button class="btn btn-primary" (click)="goToProductDescription(product.id)">show decription</button>
+        <button (click)='cartlocalstorage(product)'  >Add to cart page</button>
+
                 </div>
             </div>
         </div> 

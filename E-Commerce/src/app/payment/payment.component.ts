@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddressService } from '../Services/AddressService/address.service';
+
+declare var paypal:any;
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -10,6 +12,9 @@ import { AddressService } from '../Services/AddressService/address.service';
 
  
 export class PaymentComponent implements OnInit {
+  @ViewChild('paypal', { static: true })
+  paypalRef!: ElementRef;
+
   // cridet:boolean=false;
   // cod:boolean=false;
   type:boolean=false;
@@ -23,7 +28,8 @@ export class PaymentComponent implements OnInit {
     userName:['',[Validators.required]],
     city:['asyut'],
     Building:['',[Validators.required, Validators.pattern(this.buldingPatern)]],
-    Street:['',[Validators.required]]
+    Street:['',[Validators.required]],
+    mobile:['',[Validators.required,Validators.pattern(this.buldingPatern)]]
 
   })
 
@@ -39,7 +45,9 @@ export class PaymentComponent implements OnInit {
   get Street(){
     return this.userDataForm.get('Street')
   } 
-  
+  get mobile(){
+    return this.userDataForm.get("mobile")
+  }  
   
   
   addAdress(){
@@ -72,11 +80,35 @@ export class PaymentComponent implements OnInit {
   get cardName(){
     return this.cardForm.get("cardName")
   }
+
   get cardNo(){
     return this.cardForm.get("cardNo")
   }
-  ngOnInit(): void {
 
+
+  ngOnInit(): void {
+    paypal.Buttons(
+      {
+        style:{
+          // layout:'horizontal',
+          // shap:'rect',
+          // labbel:'paypal'
+        },
+        // creatOrder:(data:any,actions:any)=>{
+        //   return actions.order.create({
+        //     purchase_units:[
+        //       {
+        //           amount:{
+        //             value:'1000',
+        //             Currency_code:'usd'
+        //           }
+        //       }
+        //     ]
+        //   })
+        // }
+      }
+
+    ).render(this.paypalRef.nativeElement)
   }
 }
 
