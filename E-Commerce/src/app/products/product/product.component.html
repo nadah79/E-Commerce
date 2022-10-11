@@ -27,13 +27,16 @@
 
         <div class="main">
             
+            <!-- <div class="card border-info mb-3" style="width: 18rem;margin: 10px auto;" *ngFor="let product of productsData.products"> -->
             <div class="card border-info mb-3" style="width: 18rem;margin: 10px auto;" *ngFor="let product of productalll">
-                <a href="products/product-list"><img src={{product.images[0]}} class="card-img-top" alt="..." ></a>
+                <!-- <a href="products/product-list"><img src={{product.images[0]}} class="card-img-top" alt="..." ></a> -->
+                <a href="products/product-list"><img src={{product.images[0]}} width="18rem" height="200" class="card-img-top" alt="..."></a>
+
                 <div class="card-body">
                 <h5 class="card-title">{{product.title}}</h5>
                 <!-- <p class="card-text"> {{product.category}}</p> -->
                 <p class="card-text"> {{product.price +"$"}}</p>
-                <p class="card-text"> {{product.id +"$"}}</p>
+                <!-- <p class="card-text"> {{product.id +"$"}}</p> -->
                 </div>
         
                 <div class="card-body">
