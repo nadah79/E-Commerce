@@ -55,4 +55,6 @@ clearproduct(){
  this. getcardtotlal()
 }
 
+
+
 }
