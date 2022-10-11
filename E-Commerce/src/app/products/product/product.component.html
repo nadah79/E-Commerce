@@ -20,9 +20,9 @@
     </style>
 <div>    
     
-<div  style="display: flex;  justify-content: center; flex-direction: row; border: 5px solid yellow; flex-wrap: wrap;">
-    <button (click)=" getalldata()" >all product</button>
-<button class="btn"  *ngFor="let prdc of productcat"  (click)="category($event)">{{prdc}}</button>
+<div  style="display: flex;  justify-content: center; flex-direction: row; ; flex-wrap: wrap;">
+    <button class="btn btn-outline-info" (click)=" getalldata()" >all product</button>
+<button class="btn btn-outline-secondary btn-sm" style="border: none;" *ngFor="let prdc of productcat"  (click)="category($event)">{{prdc}}</button>
 </div>
 
         <div class="main">
@@ -43,7 +43,7 @@
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
                 <button class="btn btn-primary" (click)="goToProductDescription(product.id)">show decription</button>
-        <button (click)='cartlocalstorage(product)'  >Add to cart page</button>
+        <button class="btn btn-primary" (click)='cartlocalstorage(product)'  >Add to cart page</button>
 
                 </div>
             </div>
