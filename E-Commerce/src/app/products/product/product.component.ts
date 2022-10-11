@@ -13,23 +13,32 @@ export class ProductComponent implements OnInit {
   selected_comment_id: any;
   product_id:any;
   selected_product_id:any;
+  itemcart:any[]=[];
+  product:any[]=[];
+  productcat:any[]=[];
+  productdetails:any[]=[];
+  
+
+
 
   constructor(private productService:ProductService,private router:Router,private activatedRoute:ActivatedRoute) { }
   // Products:IProduct[];
-  productsData: any;
   ngOnInit(): void {
-    this.productService.getProduct().subscribe(
-      productData=>{
-        this.productsData= productData;
-        console.log(productData)
-      }
-    )
-    this.activatedRoute.paramMap.subscribe((params:ParamMap)=>{
-      this.selected_product_id=params.get('id');
-    });
+
+
+
+  
+    this.productService.getproductcategory().subscribe((data:any)=>{
+   
+      console.log(data)
+      this.productcat= data
+    })
+ 
   }
-  goToProductDescription(product_id:any)
-  {
+    
+
+    goToProductDescription(product_id:any)
+    {
   
     //go to department details page and pass the id parameter to it
     this.router.navigate(["products",product_id]);
@@ -43,6 +52,81 @@ export class ProductComponent implements OnInit {
         this.productPost=data
         
       }
-    );
+      );
+    }
+    
+    
+    
+  cartlocalstorage(item:any){
+    
+    if ("cart" in localStorage){
+      this.itemcart= JSON.parse(localStorage.getItem("cart")!)
+      let findproduct = this.itemcart.find(itd=>itd.id ==item.id)
+      if(findproduct){
+        alert("this item is exsit")
+      }else{
+        this.itemcart.push(item)
+      localStorage.setItem("cart",  JSON.stringify( this.itemcart))
   }
+  
+  
 }
+else{
+  this.itemcart.push(item)
+  localStorage.setItem("cart",  JSON.stringify( this.itemcart))
+}
+
+
+console.log(item)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+category(val:any){
+  
+    let name=  val.target.innerText
+    console.log(name)
+
+    this.productService.getproductcategorys(name).subscribe((res:any)=>{
+
+this.product=res.products
+      console.log(this.product)
+    })
+    
+    
+  }
+  
+  
+  getalldata(){
+  this.productService.getProduct().subscribe(
+    productData=>{
+      this.product= productData;
+      console.log(productData)
+    }
+    )
+    this.activatedRoute.paramMap.subscribe((params:ParamMap)=>{
+      this.selected_product_id=params.get('id');
+    });
+  }
+  }
+
+
+
+
+
+
+
+
+
+
