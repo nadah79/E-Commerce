@@ -11,6 +11,7 @@ import { ProductsModule } from './products/products.module';
 import {HttpClientModule} from '@angular/common/http'
 import { PaymentComponent } from './payment/payment.component';
 import { HeaderComponent } from './main/Components/header/header.component';
+import { FooterComponent } from './main/Components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HeaderComponent } from './main/Components/header/header.component';
     LoginComponent,
     RegisterComponent,
     PaymentComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
