@@ -7,37 +7,39 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarToggle">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-             <li class="nav-item">
+        <ul class="d-flex   mb-2 mb-lg-0 me-auto  "> 
+          <li class="btn btn-dark "> 
+          <a routerLink="/products/product" routerLinkActive="active" class="nav-link active" aria-current="page" >
+            <div>
+              <i class="fas fa-home fa-lg "></i>
+            </div>
+            Home
+          </a>
+        </li>
+             <!-- <li class="nav-item">
             <a routerLink="/products/product" routerLinkActive="active" class="nav-link active">Products</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/cart" routerLinkActive="active" class="nav-link active">cart</a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          
+          <!-- <li class="nav-item">
             <a routerLink="/payment" routerLinkActive="active" class="nav-link active"  >check-out</a>
-         </li>
-          <li class="nav-item">
-            <a routerLink="/auth/login" routerLinkActive="active" class="nav-link active" >sign in</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/auth/register" routerLinkActive="active" class="nav-link active">sign up</a>
-          </li>
-          <!-- <i class="fas fa-lock fa-lg me-3 fa-fw btn btn-light"></i>  -->
+         </li> -->
+          
+          
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-light" type="submit">Search</button>
-        </form>
+        <ul class="d-flex   mb-2 mb-lg-0">
+          <li class="btn btn-light ">
+            <a routerLink="/auth/login" routerLinkActive="active" class="nav-link active" >Login</a>
+          </li>
+          <li class="btn btn-light ms-2"> 
+            <a routerLink="/auth/register" routerLinkActive="active" class="nav-link active">Sign Up</a>
+          </li>
+          <li class="btn btn-light ms-2">
+            <a routerLink="/cart" routerLinkActive="active" class="nav-link">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
-
-  <!-- <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-  <i class="fa-regular fa-cart-shopping btn btn-light"></i>
-  <i class="fa-thin fa-cart-shopping"></i>
-  <i class="fa-duotone fa-cart-shopping"></i>
-  <i class="fa-solid fa-house-user"></i>
-  <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-  data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a> -->
-
+  
