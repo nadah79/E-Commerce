@@ -42,7 +42,6 @@ this. getalldata()
 
     goToProductDescription(product_id:any)
     {
-  
     //go to department details page and pass the id parameter to it
     this.router.navigate(["products",product_id]);
   }
@@ -87,15 +86,6 @@ else{
 
 
 
-
-
-
-
-
-
-
-
-
 category(val:any){
   
     let name=  val.target.innerText
@@ -133,10 +123,6 @@ this.productalll=res.products
     this.show=-1
   },2000)
   }
-
-
-
-
 
 
   }
