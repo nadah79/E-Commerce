@@ -32,17 +32,15 @@
 
 <br>
 <div class="row text-center">
+    
 
-<div class="col-4" *ngFor="let product of productalll , index as i">
-
+ <div class="col-4" *ngFor="let product of productalll , index as i">
     <div class="card border-info mb-3" style="width: 18rem;margin: 10px auto; box-shadow: 5px 5px 5px grey;">
-        <!-- <a href="products/product-list"><img src={{product.images[0]}} class="card-img-top" alt="..." ></a> -->
         <a href="products/product-list"><img src={{product.images[0]}} width="18rem" height="200"
                 class="card-img-top" alt="..."></a>
 
         <div class="card-body">
             <h5 class="card-title">{{product.title}}</h5>
-            <!-- <p class="card-text"> {{product.category}}</p> -->
             <p class="card-text">Price: {{product.price +" L E"}}</p>
             <p class="card-text">Discount:{{product.discountPercentage/100|percent}}</p>
 
@@ -58,5 +56,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 </div>
