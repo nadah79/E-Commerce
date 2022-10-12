@@ -8,21 +8,32 @@ import { ProductService } from 'src/app/SharedServices/product.service';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  selected_product_id:any;
+  
   constructor(private productService:ProductService,private router:Router,private activatedRoute:ActivatedRoute) { }
   productsData: any;
+  selected_product_id:any;
+ 
   ngOnInit(): void {
-    this.productService.getallproduct().subscribe(
-      productData=>{
-        this.productsData= productData;
-        console.log(productData)
-      }
-    )
+   
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>{
       this.selected_product_id=params.get('id');
+      console.log(this.selected_product_id+"woo1")
+
+      this.getItRight()
+    
     });
   }
   
+getItRight(){
+  this.productService.getfordesctipyion(this.selected_product_id).subscribe(  
+    productData=>{
+      this.productsData= productData;
+      console.log(productData)
+    }
+  )   
+}
+
+
   }
 
 
