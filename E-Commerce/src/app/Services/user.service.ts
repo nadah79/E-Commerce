@@ -43,6 +43,20 @@ export class UserService {
     return user;
   }
 
+  isLoggedIn(): boolean {
+    let result = localStorage.getItem(this.userKey);
+    if (result == null)
+      return false;
+
+    let user = JSON.parse(result) as IUsers;
+    if(user) return true;
+    else return false;
+  }
+
+  logout(){
+    localStorage.removeItem(this.userKey);
+  }
+
   isEmailExistedInUsers(email: string) :boolean{
     let existed = false;
     let users = this.getUsersFromLocal();

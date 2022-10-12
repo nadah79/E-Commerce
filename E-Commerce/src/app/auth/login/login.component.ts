@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormBuilder ,FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
@@ -7,7 +7,7 @@ import { UserService } from 'src/app/Services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit ,DoCheck {
 form! :FormGroup;
   constructor(private formBuilder:FormBuilder, 
     private userService:UserService,
@@ -52,9 +52,10 @@ form! :FormGroup;
       }
       this.userService.saveUserLoginData(user);
       this.form.reset();
-      this.router.navigateByUrl("/payment");
+      this.router.navigateByUrl("/products/product");
     }
-
+    ngDoCheck(): void {
+    }
 
     get email(){
       return this.form.controls['email'];
