@@ -25,8 +25,12 @@ export class ProductService {
   // getProduct():Observable<any[]>{
   //   return this.http.get<IProduct[]>(this.url);
   // }
-
-
+// Description call
+descUrl:string="https://dummyjson.com/products/";
+getfordesctipyion(keyWord:string){
+ return this.http.get(this.descUrl+keyWord);
+}
+// descriptioncall
   
 
     postUrl:string="https://dummyjson.com/products/add";

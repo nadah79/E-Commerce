@@ -27,7 +27,9 @@
           
         </ul>
         <ul class="d-flex   mb-2 mb-lg-0">
-          <small class="mx-1 bg-light" [(ngModel)]="userName">Welcome, {{userName}}</small> 
+          <li class=" d-flex align-items-center" *ngIf="user">
+            <small class="mx-1 text-light " style="font-size: 30px; " >Welcome {{getUserName()}}</small>
+           </li>
           <li class="btn btn-light d-flex align-items-center" *ngIf="user">
             
             <button (click)="logout()" routerLinkActive="active" class="nav-link active btn-logout" >Logout</button>
