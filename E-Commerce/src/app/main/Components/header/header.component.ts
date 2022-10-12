@@ -27,9 +27,9 @@ export class HeaderComponent implements OnInit, OnChanges, DoCheck {
     this.userService.logout();
     this.user = this.userService.getLoginUserData();
   }
-  userName:any;
+  
   getUserName(){
-   this.userName=this.user?.name;
+   return this.user?.name;
   
   }
   
