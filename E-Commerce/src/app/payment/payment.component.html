@@ -222,13 +222,14 @@
                     <div class="col-lg-6 col-xl-8">
                         <h6>3-confirm your order</h6>
                     </div>
-                    <div *ngIf="isAddress && type" class="card col-lg-6 col-xl-8">
+                    <div *ngIf="true" class="card col-lg-6 col-xl-8">
                         <div class="card-body">
                             <p>{{userName?.value}}</p>
                             <h6>your address :</h6>
                             <p> {{Building?.value}},{{Street?.value}},{{city?.value}}</p>
                             <h6>
                                 Order total:
+                                <span style="color:blue ;">{{total +" L.E"}}</span>
                             </h6>
                             <input type="button" class="btn btn-success" value="confirm" />
                         </div>

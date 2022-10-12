@@ -48,7 +48,7 @@ this.totalnumber=0
 for (let x in this.amount){
   this.totalnumber+=this.amount[x]
   localStorage.setItem("cart",JSON.stringify(this.getcartarr))
-
+  localStorage.setItem('total',JSON.stringify(this.totalnumber))
 
 }
  
