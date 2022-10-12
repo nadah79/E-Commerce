@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-cartcompo',
   templateUrl: './cartcompo.component.html',
   styleUrls: ['./cartcompo.component.scss']
 })
-export class CartcompoComponent implements OnInit {
+export class CartcompoComponent implements OnInit ,DoCheck{
   getcartarr:any[]=[]
 amount:number=1
 total:any=0
@@ -17,7 +17,10 @@ totalnumber:any=0
 
   } 
 
-  
+  ngDoCheck(): void {
+   this. getcardtotlal()
+   this.totalnumber
+  }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
