@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ParamMap, Router,ActivatedRoute } from '@angular/router';
-import { IProduct } from 'src/app/Shared Interfaces&enums/iproduct';
+
 import { ProductService } from 'src/app/SharedServices/product.service';
 
+
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class ProductComponent implements OnInit {
-  // activatedRoute: any;
+export class HomeComponent implements OnInit {
+
+  constructor(private productService:ProductService,private router:Router,private activatedRoute:ActivatedRoute) { }
   selected_comment_id: any;
   product_id:any;
   selected_product_id:any;
@@ -21,14 +23,11 @@ export class ProductComponent implements OnInit {
   
   show:number=-1
   searchName:string=''
+  
+  
 
-  constructor(private productService:ProductService,private router:Router,private activatedRoute:ActivatedRoute) { }
-  // Products:IProduct[];
-  productsData: any;
   ngOnInit(): void {
-
-
-this. getalldata()
+    this. getalldata()
 
   
     this.productService.getproductcategory().subscribe((data:any)=>{
@@ -86,6 +85,9 @@ else{
 
 
 
+
+
+
 category(val:any){
   
     let name=  val.target.innerText
@@ -124,15 +126,5 @@ this.productalll=res.products
   },2000)
   }
 
-
   }
-
-
-
-
-
-
-
-
-
 
