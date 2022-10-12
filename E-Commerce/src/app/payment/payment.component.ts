@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, DoCheck, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddressService } from '../Services/AddressService/address.service';
@@ -11,10 +11,10 @@ declare var paypal:any;
 })
 
  
-export class PaymentComponent implements OnInit {
+export class PaymentComponent implements OnInit ,DoCheck{
   @ViewChild('paypal', { static: true })
   paypalRef!: ElementRef;
-
+  total:any=0;
   // cridet:boolean=false;
   // cod:boolean=false;
   type:boolean=false;
@@ -84,7 +84,10 @@ export class PaymentComponent implements OnInit {
   get cardNo(){
     return this.cardForm.get("cardNo")
   }
-
+  ngDoCheck(): void {
+    this.getTotalPrice()
+    
+  }
 
   ngOnInit(): void {
     paypal.Buttons(
@@ -109,6 +112,11 @@ export class PaymentComponent implements OnInit {
       }
 
     ).render(this.paypalRef.nativeElement)
+
+  }
+  getTotalPrice(){
+    this.total=localStorage.getItem("total")
+    console.log(this.total)
   }
 }
 
