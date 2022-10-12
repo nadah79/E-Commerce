@@ -28,25 +28,39 @@
         <div class="main">
             
             <!-- <div class="card border-info mb-3" style="width: 18rem;margin: 10px auto;" *ngFor="let product of productsData.products"> -->
-            <div class="card border-info mb-3" style="width: 18rem;margin: 10px auto;" *ngFor="let product of productalll">
+            <div  class="card border-info mb-3" style="width: 18rem;margin: 10px auto; box-shadow: 5px 5px 5px grey;" *ngFor="let product of productalll , index as i">
                 <!-- <a href="products/product-list"><img src={{product.images[0]}} class="card-img-top" alt="..." ></a> -->
                 <a href="products/product-list"><img src={{product.images[0]}} width="18rem" height="200" class="card-img-top" alt="..."></a>
 
                 <div class="card-body">
                 <h5 class="card-title">{{product.title}}</h5>
                 <!-- <p class="card-text"> {{product.category}}</p> -->
-                <p class="card-text"> {{product.price +"$"}}</p>
+                <p class="card-text"> {{product.price +"L E "}}</p>
+                <div style="width: 50%; display: flex;flex-direction: row; justify-content: space-between; text-align: center;" class="d-flex flex-row user-ratings">
+                    <div class="ratings" >
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+
+                </div>
+                <p class="text-muted ml-1">{{product.rating
+                }}</p>
                 <!-- <p class="card-text"> {{product.id +"$"}}</p> -->
                 </div>
         
-                <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <div class="card-body" style="display: flex;flex-direction: column; ">
+               
                 <button class="btn btn-primary" (click)="goToProductDescription(product.id)">show decription</button>
-        <button class="btn btn-primary" (click)='cartlocalstorage(product)'  >Add to cart </button>
-
-                </div>
-            </div>
+        <button style="margin: 5px; " class="btn btn-primary" (click)='cartlocalstorage(product)' *ngIf="show!==i"  (click)="display(i)"   >Add to cart </button>
+        <button style="color:red ;margin: 5px; border: none; background-color: chocolate; padding: 6px; border-radius: 5px;" *ngIf="show==i"  >successfull added  </button>
+        
+        
+        
+        
+    </div>
+</div>
         </div> 
 </div>
 
@@ -65,3 +79,10 @@
             <a routerLink="products/product">product</a>
             <a routerLink="products/product-list">product-list</a>
         </nav> -->
+
+
+
+
+
+
+        

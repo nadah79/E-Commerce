@@ -7,13 +7,16 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 })
 export class CartcompoComponent implements OnInit ,DoCheck{
   getcartarr:any[]=[]
-amount:number=1
+amount:any[]=[]
 total:any=0
-totalnumber:any=0
+totalnumber:any=0;
+stock:any[]=[]
+stockchecker:boolean=false
   constructor() { }
 
   ngOnInit(): void {
-    this.getcardetails()
+   
+   this. getcardetails()
 
   } 
 
@@ -28,7 +31,7 @@ totalnumber:any=0
     
     this.getcartarr= JSON.parse(localStorage.getItem("cart")!)
     
-    console.log( this.getcartarr)
+   console.log()
     this.getcardtotlal()
   }
 
@@ -42,9 +45,8 @@ totalnumber:any=0
   }
   getcardtotlal(){
 this.totalnumber=0
-
-for (let x in this.getcartarr){
-  this.totalnumber+= this.getcartarr[x].price * this.amount
+for (let x in this.amount){
+  this.totalnumber+=this.amount[x]
   localStorage.setItem("cart",JSON.stringify(this.getcartarr))
 
 
@@ -58,6 +60,16 @@ clearproduct(){
  this. getcardtotlal()
 }
 
+inp(i:any,x:any){
+ 
+this.amount[i]= this.getcartarr[i].price*x.target.value
+  
+  console.log(this.amount[i])
+  this.stock[i]=this.getcartarr[i].stock-x.target.value
+  if(this.getcartarr[i].stock==0){
+    alert("hi")
+  }
 
+}
 
 }

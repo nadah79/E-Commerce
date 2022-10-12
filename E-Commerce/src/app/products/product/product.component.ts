@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
   productdetails:any[]=[];
   productalll:any[]=[]
 
-
+  show:number=-1
 
   constructor(private productService:ProductService,private router:Router,private activatedRoute:ActivatedRoute) { }
   // Products:IProduct[];
@@ -119,6 +119,15 @@ this.productalll=res.products
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>{
       this.selected_product_id=params.get('id');
     });
+  }
+
+
+  display(index:number){
+  this.show=index;
+
+  setTimeout(()=>{
+    this.show=-1
+  },2000)
   }
   }
 
