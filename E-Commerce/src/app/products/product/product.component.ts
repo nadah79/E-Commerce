@@ -18,20 +18,22 @@ export class ProductComponent implements OnInit {
   productcat:any[]=[];
   productdetails:any[]=[];
   productalll:any[]=[]
-
+  
   show:number=-1
+  searchName:string=''
 
   constructor(private productService:ProductService,private router:Router,private activatedRoute:ActivatedRoute) { }
   // Products:IProduct[];
   productsData: any;
   ngOnInit(): void {
 
+
 this. getalldata()
 
   
     this.productService.getproductcategory().subscribe((data:any)=>{
    
-      console.log(data)
+      // console.log(data)
       this.productcat= data
     })
  
@@ -78,7 +80,7 @@ else{
 }
 
 
-console.log(item)
+// console.log(item)
 
 }
 
@@ -102,7 +104,7 @@ category(val:any){
     this.productService.getproductcategorys(name).subscribe((res:any)=>{
 
 this.productalll=res.products
-      console.log(this.product)
+      // console.log(this.product)
     })
     
     
@@ -114,6 +116,8 @@ this.productalll=res.products
     (productData:any)=>{
       this.productalll= productData.products;
       console.log(this.productalll)
+    
+
     }
     )
     this.activatedRoute.paramMap.subscribe((params:ParamMap)=>{
@@ -129,6 +133,12 @@ this.productalll=res.products
     this.show=-1
   },2000)
   }
+
+
+
+
+
+
   }
 
 
