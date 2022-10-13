@@ -19,17 +19,20 @@ export class PaymentComponent implements OnInit ,DoCheck{
   // cod:boolean=false;
   type:boolean=false;
   isAddress:boolean=false;
+  isConfirmed:boolean=false;
 
   constructor(private fb:FormBuilder ,private router:Router ,private addressservice:AddressService) { }
   cities=["asyut","Cairo","Giza","Alexandria","Mansoura","Hurghada"];
   buldingPatern="^[0-9]+$";
   cardNoPatern="^[0-9]{16}"
+  mobilePatern="^[0-9]{11}"
+
   userDataForm=this.fb.group({
     userName:['',[Validators.required]],
     city:['asyut'],
     Building:['',[Validators.required, Validators.pattern(this.buldingPatern)]],
     Street:['',[Validators.required]],
-    mobile:['',[Validators.required,Validators.pattern(this.buldingPatern)]]
+    mobile:['',[Validators.required,Validators.pattern(this.mobilePatern)]]
 
   })
 
@@ -83,6 +86,10 @@ export class PaymentComponent implements OnInit ,DoCheck{
 
   get cardNo(){
     return this.cardForm.get("cardNo")
+  }
+
+  confirmed(){
+this.isConfirmed=true;
   }
   ngDoCheck(): void {
     this.getTotalPrice()

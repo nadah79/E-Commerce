@@ -1,4 +1,3 @@
-
 <div class="container p-5">
 
     <section>
@@ -48,7 +47,7 @@
                                                         it is required
                                                     </small>
                                                     <small class="text-danger" *ngIf="mobile?.errors?.['pattern']">
-                                                        it must be number 
+                                                        it must be 11 number 
                                                     </small>
                                                 </div>
                                             </div>
@@ -231,16 +230,21 @@
                                 Order total:
                                 <span style="color:blue ;">{{total +" L.E"}}</span>
                             </h6>
-                            <input type="button" class="btn btn-success" value="confirm" />
+                            <input type="button" class="btn btn-success" value="confirm" (click)="confirmed()" />
                         </div>
                     </div>
+                    <div *ngIf="isConfirmed" class="alert alert-success text-center col-lg-6 col-xl-8" role="alert">
+                        Order Done successfully
+                     </div>
                 </div>
             </div>
         </section>
+      
     </div>
 </div>
 
  <br>
+   
       <!-- Modal -->
       <div class="modal fade" id="paypalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
