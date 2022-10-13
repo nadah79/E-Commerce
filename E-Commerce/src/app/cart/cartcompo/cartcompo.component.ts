@@ -15,7 +15,7 @@ stockchecker:boolean=false
   constructor() { }
 
   ngOnInit(): void {
-   
+
    this. getcardetails()
 
   } 
@@ -72,7 +72,7 @@ clearproduct(){
 }
 
 inp(i:any,x:any){
- 
+
 this.amount[i]= this.getcartarr[i].price*x.target.value
   
   console.log(this.amount[i])
