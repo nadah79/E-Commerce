@@ -9,10 +9,11 @@ import { PaymentComponent } from './payment/payment.component';
 import { CartcompoComponent } from './cart/cartcompo/cartcompo.component';
 import { HomeComponent } from './main/Components/home/home.component';
 import { ErrorComponent } from './main/Components/error/error.component';
+import { NewstyleComponent } from './products/newstyle/newstyle.component';
 
 
 const routes: Routes = [
-  {path:'',component:ProductComponent},
+  {path:'',component:NewstyleComponent},
 
   {path:'auth/register',component:RegisterComponent},
   {path:'auth/login',component:LoginComponent},
@@ -20,9 +21,10 @@ const routes: Routes = [
   {path:'products/:id',component:ProductListComponent},
   {path:'products/product-list',component:ProductListComponent},
   {path:'cart',component:CartcompoComponent},
-  {path:'home',component:HomeComponent},
+  {path:'home',component:NewstyleComponent},
   {path:'payment', component:PaymentComponent, canActivate: [AuthGuard]},
-  {path:'**',component:ErrorComponent}
+  {path:'**',component:ErrorComponent},
+  // {path:'products/Trials',component:NewstyleComponent}
 ];
 
 @NgModule({

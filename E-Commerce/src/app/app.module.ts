@@ -13,6 +13,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { HeaderComponent } from './main/Components/header/header.component';
 import { FooterComponent } from './main/Components/footer/footer.component';
 import { HomeComponent } from './main/Components/home/home.component';
+import { NewstyleComponent} from './products/newstyle/newstyle.component'
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HomeComponent } from './main/Components/home/home.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
+    
   ],
   imports: [
     BrowserModule,
