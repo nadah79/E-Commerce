@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit, OnChanges, DoCheck {
   }
   
   ngDoCheck(): void {
-  this.  cartlength()
+  this.cartlength()
   this.cartlengt
  
   
@@ -42,11 +42,8 @@ export class HeaderComponent implements OnInit, OnChanges, DoCheck {
  cartlength(){
     
     this.getcartarr= JSON.parse(localStorage.getItem("cart")!)
-
-
     this.cartlengt=this.getcartarr.length;
     console.log(this.cartlengt)
-
 
   }
 }

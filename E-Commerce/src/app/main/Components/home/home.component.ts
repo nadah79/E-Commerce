@@ -83,11 +83,6 @@ else{
 }
 
 
-
-
-
-
-
 category(val:any){
   
     let name=  val.target.innerText

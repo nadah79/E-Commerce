@@ -13,7 +13,10 @@ import { NewstyleComponent } from './products/newstyle/newstyle.component';
 
 
 const routes: Routes = [
+
   {path:'',component:NewstyleComponent},
+
+
 
   {path:'auth/register',component:RegisterComponent},
   {path:'auth/login',component:LoginComponent},

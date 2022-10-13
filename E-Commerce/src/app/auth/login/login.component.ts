@@ -43,8 +43,8 @@ form! :FormGroup;
     }
 
     onLogin(){
+      location.reload();    
       if(!this.form.valid) return;
-
       let user = this.userService.login(this.form.value);
       if(!user){
         alert("Invalid credentials");
