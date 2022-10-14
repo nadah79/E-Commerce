@@ -32,8 +32,9 @@ this. getalldata()
   
     this.productService.getproductcategory().subscribe((data:any)=>{
    
-      // console.log(data)
+      console.log(data)
       this.productcat= data
+      console.log(this.productcat)
     })
  
   }

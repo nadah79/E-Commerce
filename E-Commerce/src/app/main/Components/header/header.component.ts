@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit, OnChanges, DoCheck {
   }
   
   ngDoCheck(): void {
-  this.cartlength()
+  // this.cartlength()
   this.cartlengt
  
   

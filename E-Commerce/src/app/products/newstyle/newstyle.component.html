@@ -7,7 +7,7 @@
 			<aside class="col-lg-3"
                     style="overflow:scroll; height:400px;"
             > 
-				<nav class="nav flex-column nav-pills">
+				<nav class="nav flex-column nav-pills ">
 				  <a class="nav-link active" aria-current="page" href="#" (click)="getalldata()">Electronics</a>
 				  <a class="nav-link"   
                      href="#"
@@ -19,7 +19,7 @@
 				</nav>
 			</aside>
 			<div class="col-lg-9">
-				<article class="card-banner p-5 bg-primary" style="height: 470px">
+				<article class="card-banner" style="height: 440px;background-color:#b9621b;">
 					<!-- <div style="max-width: 500px">
 			        <h2 class="text-white">Great products with <br> best deals </h2>
 			        <p class="text-white">No matter how far along you are in your sophistication as an amateur astronomer, there is always one.</p>
@@ -32,13 +32,13 @@
                                     <div class="carousel-inner" style="margin: 1px auto;">
                     
                                         <div class="carousel-item active h-90" data-bs-interval="5000">
-                                            <img src="assets/bg/Electronics.jpg" class="d-block w-100 " alt="..." height="420px">
+                                            <img src="assets/bg/Electronics2.jpg" class="d-block w-100 " alt="..." height="420px">
                                         </div>
                                         <div class="carousel-item" data-bs-interval="5000">
-                                            <img src="assets/bg/fashion.png" class="d-block w-100 " alt="..." height="420px">
+                                            <img src="assets/bg/fashion2.png" class="d-block w-100 " alt="..." height="420px">
                                         </div>
                                         <div class="carousel-item" data-bs-interval="5000">
-                                            <img src="assets/bg/ecommerce.jpg" class="d-block w-100 " alt="..." height="420px">
+                                            <img src="assets/bg/ecommerce2.jpg" class="d-block w-100 " alt="..." height="420px">
                                         </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselInterval"
@@ -110,9 +110,9 @@ a.title, .title a, a .title {
     <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let product of productalll; index as i">
         <figure class="card card-product-grid">
             <a href="#" class="img-wrap"> 
-                <span class="topbar"> <b class="badge bg-success"> Offer </b> </span>
+                <!-- <span class="topbar"> <b class="badge bg-success"> Offer </b> </span> -->
                 <img src="{{ product.images[0] }}"
-                      style="height:60%;object-fit: cover;"> 
+                      style="height:90%;object-fit: cover;"> 
             </a>
             <figcaption class="info-wrap border-top">
                 <a href="#" class="float-end btn btn-light btn-icon"> <i class="fa fa-heart"></i> </a>
